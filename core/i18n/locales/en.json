@@ -1,0 +1,126 @@
+{
+  "home": {
+    "title": "Welcome Home",
+    "subtitle": "Explore our amazing features",
+    "greeting": "Hello, {{name}}!",
+    "features": {
+      "title": "Key Features",
+      "feature1": {
+        "title": "Fast Performance",
+        "description": "Lightning-fast performance with optimized code"
+      },
+      "feature2": {
+        "title": "Beautiful UI",
+        "description": "Modern and intuitive user interface"
+      },
+      "feature3": {
+        "title": "Secure",
+        "description": "Enterprise-grade security for your data"
+      }
+    },
+    "cta": "Get Started",
+    "stats": {
+      "users": "Active Users",
+      "downloads": "Downloads",
+      "rating": "Rating"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Manage your account settings",
+    "sections": {
+      "account": "Account Information",
+      "preferences": "Preferences",
+      "security": "Security"
+    },
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "bio": "Biography"
+    },
+    "settings": {
+      "notifications": "Push Notifications",
+      "darkMode": "Dark Mode",
+      "language": "Language"
+    },
+    "actions": {
+      "edit": "Edit Profile",
+      "save": "Save Changes",
+      "logout": "Logout",
+      "changePassword": "Change Password"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to continue",
+      "button": "Sign In",
+      "forgotPassword": "Forgot Password?",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Sign Up"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Sign up to get started",
+      "button": "Sign Up",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Sign In",
+      "success": "Account created successfully!"
+    },
+    "fields": {
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    },
+    "placeholders": {
+      "name": "Enter your full name",
+      "email": "Enter your email",
+      "password": "Enter your password",
+      "confirmPassword": "Confirm your password"
+    },
+    "validation": {
+      "fillAllFields": "Please fill in all fields",
+      "passwordMismatch": "Passwords do not match",
+      "passwordTooShort": "Password must be at least 6 characters"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Browse our collection",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "stockStatus": "Stock Status",
+    "empty": {
+      "title": "No Products Yet",
+      "message": "Products will appear here once they are added"
+    },
+    "detail": {
+      "notFound": "Product not found"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "success": "Success!",
+    "welcome": "Welcome",
+    "noData": "No data available"
+  },
+  "errorBoundary": {
+    "title": "Oops! Something went wrong",
+    "message": "An unexpected error occurred. Please try again.",
+    "retry": "Try Again"
+  },
+  "validation": {
+    "required": "This field is required",
+    "minLength": "Minimum {{count}} characters required",
+    "maxLength": "Maximum {{count}} characters allowed",
+    "invalidFormat": "Invalid format",
+    "invalidEmail": "Invalid email address",
+    "passwordMismatch": "Passwords do not match"
+  }
+}

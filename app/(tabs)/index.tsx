@@ -1,98 +1,144 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { useTheme } from "@/core/theme/theme-provider";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { Pressable, ScrollView, Text, View } from "react-native";
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const { t } = useTranslation();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const features = [
+    {
+      icon: "⚡",
+      title: t("home.features.feature1.title"),
+      description: t("home.features.feature1.description"),
+    },
+    {
+      icon: "🎨",
+      title: t("home.features.feature2.title"),
+      description: t("home.features.feature2.description"),
+    },
+    {
+      icon: "🔒",
+      title: t("home.features.feature3.title"),
+      description: t("home.features.feature3.description"),
+    },
+  ];
+
+  const stats = [
+    { value: "10K+", label: t("home.stats.users") },
+    { value: "50K+", label: t("home.stats.downloads") },
+    { value: "4.9", label: t("home.stats.rating") },
+  ];
+
+  return (
+    <ScrollView
+      className={`flex-1 ${isDark ? "bg-background-dark" : "bg-background-light"}`}
+      showsVerticalScrollIndicator={false}
+    >
+      {/* Hero Section */}
+      <View
+        className={`h-64 justify-center items-center px-6 ${
+          isDark ? "bg-primary-700" : "bg-primary-500"
+        }`}
+      >
+        <Text className="text-4xl font-bold text-center mb-3 text-white">
+          {t("home.title")}
+        </Text>
+        <Text className="text-lg text-center text-gray-100">
+          {t("home.subtitle")}
+        </Text>
+      </View>
+
+      {/* Stats Section */}
+      <View className="flex-row justify-around px-6 py-8 -mt-8">
+        {stats.map((stat, index) => (
+          <View
+            key={index}
+            className={`flex-1 mx-2 p-4 rounded-2xl shadow-lg ${
+              isDark ? "bg-gray-800" : "bg-white"
+            }`}
+          >
+            <Text
+              className={`text-2xl font-bold text-center ${
+                isDark ? "text-primary-400" : "text-primary-600"
+              }`}
+            >
+              {stat.value}
+            </Text>
+            <Text
+              className={`text-sm text-center mt-1 ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              {stat.label}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Greeting Section */}
+      <View className="px-6 py-4">
+        <Text
+          className={`text-2xl font-semibold ${
+            isDark ? "text-white" : "text-gray-900"
+          }`}
+        >
+          {t("home.greeting", { name: "User" })}
+        </Text>
+      </View>
+
+      {/* Features Section */}
+      <View className="px-6 py-4">
+        <Text
+          className={`text-xl font-bold mb-4 ${
+            isDark ? "text-white" : "text-gray-900"
+          }`}
+        >
+          {t("home.features.title")}
+        </Text>
+
+        {features.map((feature, index) => (
+          <View
+            key={index}
+            className={`mb-4 p-5 rounded-xl shadow-md ${
+              isDark ? "bg-gray-800" : "bg-white"
+            }`}
+          >
+            <View className="flex-row items-center mb-3">
+              <Text className="text-3xl mr-3">{feature.icon}</Text>
+              <Text
+                className={`text-lg font-semibold flex-1 ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                {feature.title}
+              </Text>
+            </View>
+            <Text
+              className={`text-base ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              {feature.description}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      {/* CTA Button */}
+      <View className="px-6 py-8">
+        <Pressable
+          className={`py-4 px-6 rounded-xl shadow-lg active:opacity-80 ${
+            isDark ? "bg-primary-600" : "bg-primary-500"
+          }`}
+        >
+          <Text className="text-white text-center text-lg font-semibold">
+            {t("home.cta")}
+          </Text>
+        </Pressable>
+      </View>
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});

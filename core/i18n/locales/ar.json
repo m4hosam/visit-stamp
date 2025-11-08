@@ -1,0 +1,126 @@
+{
+  "home": {
+    "title": "أهلاً بك في الصفحة الرئيسية",
+    "subtitle": "استكشف ميزاتنا المذهلة",
+    "greeting": "مرحباً، {{name}}!",
+    "features": {
+      "title": "الميزات الرئيسية",
+      "feature1": {
+        "title": "أداء سريع",
+        "description": "أداء فائق السرعة مع كود محسن"
+      },
+      "feature2": {
+        "title": "واجهة مستخدم جميلة",
+        "description": "واجهة مستخدم عصرية وبديهية"
+      },
+      "feature3": {
+        "title": "آمن",
+        "description": "أمان على مستوى المؤسسات لبياناتك"
+      }
+    },
+    "cta": "ابدأ الآن",
+    "stats": {
+      "users": "المستخدمون النشطون",
+      "downloads": "التنزيلات",
+      "rating": "التقييم"
+    }
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "subtitle": "إدارة إعدادات حسابك",
+    "sections": {
+      "account": "معلومات الحساب",
+      "preferences": "التفضيلات",
+      "security": "الأمان"
+    },
+    "fields": {
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "bio": "السيرة الذاتية"
+    },
+    "settings": {
+      "notifications": "الإشعارات",
+      "darkMode": "الوضع الداكن",
+      "language": "اللغة"
+    },
+    "actions": {
+      "edit": "تعديل الملف الشخصي",
+      "save": "حفظ التغييرات",
+      "logout": "تسجيل الخروج",
+      "changePassword": "تغيير كلمة المرور"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "سجل الدخول للمتابعة",
+      "button": "تسجيل الدخول",
+      "forgotPassword": "هل نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "registerLink": "إنشاء حساب"
+    },
+    "register": {
+      "title": "إنشاء حساب",
+      "subtitle": "قم بالتسجيل لتبدأ",
+      "button": "إنشاء حساب",
+      "haveAccount": "هل لديك حساب بالفعل؟",
+      "loginLink": "تسجيل الدخول",
+      "success": "تم إنشاء الحساب بنجاح!"
+    },
+    "fields": {
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور"
+    },
+    "placeholders": {
+      "name": "أدخل اسمك الكامل",
+      "email": "أدخل بريدك الإلكتروني",
+      "password": "أدخل كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور"
+    },
+    "validation": {
+      "fillAllFields": "يرجى ملء جميع الحقول",
+      "passwordMismatch": "كلمتا المرور غير متطابقتين",
+      "passwordTooShort": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"
+    }
+  },
+  "products": {
+    "title": "المنتجات",
+    "subtitle": "تصفح مجموعتنا",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "stockStatus": "حالة المخزون",
+    "empty": {
+      "title": "لا توجد منتجات بعد",
+      "message": "ستظهر المنتجات هنا بمجرد إضافتها"
+    },
+    "detail": {
+      "notFound": "المنتج غير موجود"
+    }
+  },
+  "common": {
+    "loading": "جار التحميل...",
+    "error": "حدث خطأ ما",
+    "retry": "إعادة المحاولة",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "success": "نجاح!",
+    "welcome": "أهلاً بك",
+    "noData": "لا توجد بيانات متاحة"
+  },
+  "errorBoundary": {
+    "title": "عفواً! حدث خطأ ما",
+    "message": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+    "retry": "حاول مرة أخرى"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "minLength": "الحد الأدنى {{count}} حرفاً مطلوباً",
+    "maxLength": "الحد الأقصى {{count}} حرفاً مسموحاً به",
+    "invalidFormat": "تنسيق غير صالح",
+    "invalidEmail": "عنوان بريد إلكتروني غير صالح",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين"
+  }
+}
