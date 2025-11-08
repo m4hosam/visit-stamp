@@ -22,7 +22,7 @@ function RootLayoutNav() {
   const { theme } = useTheme();
 
   return (
-    <View className={theme === "dark" ? "dark flex-1" : "flex-1"}>
+    <View className={theme === "dark" ? "dark" : ""}>
       <NavigationThemeProvider
         value={theme === "dark" ? DarkTheme : DefaultTheme}
       >
@@ -32,18 +32,6 @@ function RootLayoutNav() {
           <Stack.Screen name="auth/register" />
           <Stack.Screen name="auth/forgot-password" />
           <Stack.Screen name="(tabs)" />
-          <Stack.Screen
-            name="products/[id]"
-            options={{ presentation: "card", headerShown: true }}
-          />
-          <Stack.Screen
-            name="modal"
-            options={{
-              presentation: "modal",
-              title: "Modal",
-              headerShown: true,
-            }}
-          />
         </Stack>
         <StatusBar style={theme === "dark" ? "light" : "dark"} />
       </NavigationThemeProvider>

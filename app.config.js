@@ -1,7 +1,7 @@
 export default {
   expo: {
-    name: 'react-native-structure2',
-    slug: 'react-native-structure2',
+    name: 'visit-stamp',
+    slug: 'visit-stamp',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/images/icon.png',
@@ -15,14 +15,14 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.yourcompany.reactnativestructure2',
+      bundleIdentifier: 'com.yourcompany.visit-stamp',
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/images/adaptive-icon.png',
+        foregroundImage: './assets/images/icon.png',
         backgroundColor: '#ffffff',
       },
-      package: 'com.yourcompany.reactnativestructure2',
+      package: 'com.yourcompany.visit-stamp',
     },
     web: {
       bundler: 'metro',
