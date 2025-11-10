@@ -15,14 +15,14 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.yourcompany.visit-stamp',
+      bundleIdentifier: 'com.yourcompany.visitstamp',
     },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/images/icon.png',
         backgroundColor: '#ffffff',
       },
-      package: 'com.yourcompany.visit-stamp',
+      package: 'com.yourcompany.visitstamp',
     },
     web: {
       bundler: 'metro',
