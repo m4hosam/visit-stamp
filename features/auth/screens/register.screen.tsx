@@ -1,4 +1,5 @@
 // (auth)/register.tsx
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/Button";
 import {
   Country,
@@ -6,9 +7,9 @@ import {
   countries,
 } from "@/components/ui/CountryPicker";
 import { Input } from "@/components/ui/Input";
-import { Colors } from "@/constants/theme";
 import { useAuth } from "@/core/auth/auth.context";
 import { Alert } from "@/core/shared/alert";
+import { useThemeStyle } from "@/hooks/use-theme-style";
 import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -24,8 +25,9 @@ import { AuthError } from "../types";
 
 export default function RegisterScreen() {
   const { register } = useAuth();
-
+  const { colors, getFont, getColor } = useThemeStyle();
   const router = useRouter();
+
   const [formData, setFormData] = useState({
     email: "",
     displayName: "",
@@ -86,7 +88,6 @@ export default function RegisterScreen() {
         selectedCountry.dialCode + formData.phoneNumber
       );
 
-      // Redirect to verification screen with email parameter
       router.replace({
         pathname: "/verify" as any,
         params: { email: formData.email },
@@ -106,6 +107,102 @@ export default function RegisterScreen() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    scrollContainer: {
+      flexGrow: 1,
+    },
+    content: {
+      flex: 1,
+      padding: 24,
+      justifyContent: "center",
+    },
+    title: {
+      fontSize: 35,
+      color: colors.textPrimary,
+      textAlign: "center",
+      marginBottom: 32,
+      marginTop: 15,
+      fontFamily: getFont("700"),
+    },
+    logoContainer: {
+      alignItems: "center",
+      marginBottom: 32,
+    },
+    logo: {
+      width: 250,
+      height: 62,
+    },
+    subtitle: {
+      fontSize: 16,
+      color: colors.textSecondary,
+      textAlign: "center",
+      marginBottom: 32,
+      fontFamily: getFont("500"),
+    },
+    form: {
+      marginBottom: 24,
+    },
+    input: {
+      borderRadius: 25,
+      borderColor: colors.border,
+      backgroundColor: colors.background,
+      color: colors.textPrimary,
+      fontFamily: getFont("300"),
+    },
+    phoneContainer: {
+      flexDirection: "row",
+      alignItems: "flex-start",
+      marginBottom: 16,
+    },
+    countryCode: {
+      marginRight: 12,
+    },
+    phoneInputContainer: {
+      flex: 1,
+      marginBottom: 0,
+    },
+    phoneInput: {
+      flex: 1,
+    },
+    termsContainer: {
+      marginVertical: 16,
+    },
+    termsText: {
+      fontSize: 12,
+      color: colors.textPrimary,
+      textAlign: "center",
+      lineHeight: 18,
+      fontFamily: getFont("400"),
+    },
+    signUpButton: {
+      backgroundColor: colors.primary,
+      borderRadius: 25,
+      paddingVertical: 14,
+      width: "70%",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: 16,
+    },
+    footer: {
+      alignItems: "center",
+      marginTop: 24,
+      marginBottom: 32,
+    },
+    footerText: {
+      fontSize: 16,
+      color: colors.textPrimary,
+      fontFamily: getFont("500"),
+    },
+    link: {
+      color: colors.primary,
+      fontFamily: getFont("700"),
+    },
+  });
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -117,6 +214,7 @@ export default function RegisterScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.content}>
+          <ThemeSwitcher />
           <Text style={styles.title}>Sign Up</Text>
 
           <View style={styles.logoContainer}>
@@ -139,7 +237,7 @@ export default function RegisterScreen() {
               autoComplete="email"
               error={errors.email}
               style={styles.input}
-              placeholderTextColor={Colors.light.textPrimary}
+              placeholderTextColor={colors.textPrimary}
             />
 
             <Input
@@ -149,7 +247,7 @@ export default function RegisterScreen() {
               autoComplete="name"
               error={errors.displayName}
               style={styles.input}
-              placeholderTextColor={Colors.light.textPrimary}
+              placeholderTextColor={colors.textPrimary}
             />
 
             <View style={styles.phoneContainer}>
@@ -166,7 +264,7 @@ export default function RegisterScreen() {
                 error={errors.phoneNumber}
                 style={[styles.input, styles.phoneInput]}
                 containerStyle={styles.phoneInputContainer}
-                placeholderTextColor={Colors.light.textPrimary}
+                placeholderTextColor={colors.textPrimary}
               />
             </View>
 
@@ -178,7 +276,7 @@ export default function RegisterScreen() {
               autoComplete="password-new"
               error={errors.password}
               style={styles.input}
-              placeholderTextColor={Colors.light.textPrimary}
+              placeholderTextColor={colors.textPrimary}
             />
 
             <Input
@@ -189,7 +287,7 @@ export default function RegisterScreen() {
               autoComplete="password-new"
               error={errors.confirmPassword}
               style={styles.input}
-              placeholderTextColor={Colors.light.textPrimary}
+              placeholderTextColor={colors.textPrimary}
             />
 
             <View style={styles.termsContainer}>
@@ -220,98 +318,3 @@ export default function RegisterScreen() {
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  scrollContainer: {
-    flexGrow: 1,
-  },
-  content: {
-    flex: 1,
-    padding: 24,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 35,
-    color: Colors.light.secondary,
-    textAlign: "center",
-    marginBottom: 32,
-    marginTop: 15,
-    fontFamily: "Poppins_700Bold",
-  },
-  logoContainer: {
-    alignItems: "center",
-    marginBottom: 32,
-  },
-  logo: {
-    width: 250,
-    height: 62,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: Colors.light.textSecondary,
-    textAlign: "center",
-    marginBottom: 32,
-    fontFamily: "Poppins_500Medium",
-  },
-  form: {
-    marginBottom: 24,
-  },
-  input: {
-    borderRadius: 25,
-    borderColor: Colors.light.border,
-    backgroundColor: Colors.light.background,
-    color: Colors.light.textPrimary,
-    fontFamily: "Poppins_300Light",
-  },
-  phoneContainer: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    marginBottom: 16,
-  },
-  countryCode: {
-    marginRight: 12,
-  },
-  phoneInputContainer: {
-    flex: 1,
-    marginBottom: 0,
-  },
-  phoneInput: {
-    flex: 1,
-  },
-  termsContainer: {
-    marginVertical: 16,
-  },
-  termsText: {
-    fontSize: 12,
-    color: Colors.light.textPrimary,
-    textAlign: "center",
-    lineHeight: 18,
-  },
-  signUpButton: {
-    backgroundColor: Colors.light.primary,
-    borderRadius: 25,
-    paddingVertical: 14,
-    width: "70%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 16,
-  },
-  footer: {
-    alignItems: "center",
-    marginTop: 24,
-    marginBottom: 32,
-  },
-  footerText: {
-    fontSize: 16,
-    color: Colors.light.textPrimary,
-    fontFamily: "Poppins_500Medium",
-  },
-  link: {
-    color: Colors.light.primary,
-    fontFamily: "Poppins_700Bold",
-  },
-});

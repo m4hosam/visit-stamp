@@ -1,4 +1,22 @@
+import {
+  Cairo_300Light,
+  Cairo_400Regular,
+  Cairo_500Medium,
+  Cairo_600SemiBold,
+  Cairo_700Bold,
+  Cairo_800ExtraBold,
+} from "@expo-google-fonts/cairo";
+import {
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+} from "@expo-google-fonts/poppins";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 import React, {
   createContext,
   ReactNode,
@@ -6,7 +24,10 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { useColorScheme as useRNColorScheme, View } from "react-native";
+import { useColorScheme as useRNColorScheme } from "react-native";
+
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync();
 
 const THEME_KEY = "@theme_preference";
 
@@ -16,6 +37,7 @@ interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
   setTheme: (theme: Theme) => void;
+  fontsLoaded: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -25,9 +47,31 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
   const [isLoading, setIsLoading] = useState(true);
 
+  // Load fonts
+  const [fontsLoaded, fontError] = useFonts({
+    Poppins_300Light,
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
+    Poppins_800ExtraBold,
+    Cairo_300Light,
+    Cairo_400Regular,
+    Cairo_500Medium,
+    Cairo_600SemiBold,
+    Cairo_700Bold,
+    Cairo_800ExtraBold,
+  });
+
   useEffect(() => {
     loadThemePreference();
   }, []);
+
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
 
   const loadThemePreference = async () => {
     try {
@@ -58,12 +102,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     await setTheme(newTheme);
   };
 
-  if (isLoading) {
-    return null; // Return null to prevent flash, app will show splash screen
+  if (isLoading || !fontsLoaded) {
+    return null;
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, toggleTheme, setTheme, fontsLoaded }}
+    >
       {children}
     </ThemeContext.Provider>
   );

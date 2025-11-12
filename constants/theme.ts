@@ -68,3 +68,23 @@ export const Fonts = Platform.select({
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
 });
+
+// Font weight mapping for Poppins (English) and Cairo (Arabic)
+export const FontFamilies = {
+  en: {
+    light: "Poppins_300Light",
+    regular: "Poppins_400Regular",
+    medium: "Poppins_500Medium",
+    semiBold: "Poppins_600SemiBold",
+    bold: "Poppins_700Bold",
+    extraBold: "Poppins_800ExtraBold",
+  },
+  ar: {
+    light: "Cairo_300Light",
+    regular: "Cairo_400Regular",
+    medium: "Cairo_500Medium",
+    semiBold: "Cairo_600SemiBold",
+    bold: "Cairo_700Bold",
+    extraBold: "Cairo_800ExtraBold",
+  },
+};

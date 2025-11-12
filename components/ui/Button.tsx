@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from "react-native";
-import { Colors } from "../../constants/Colors";
+import { Colors } from "../../constants/theme";
 
 interface ButtonProps extends TouchableOpacityProps {
   title: string;

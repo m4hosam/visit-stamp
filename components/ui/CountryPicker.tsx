@@ -1,4 +1,4 @@
-import { Colors } from "@/constants/Colors";
+import { Colors } from "@/constants/theme";
 import React, { useState } from "react";
 import {
   Image,
@@ -293,12 +293,12 @@ const styles = StyleSheet.create({
   },
   dialCode: {
     fontSize: 16,
-    color: Colors.light.text,
+    color: Colors.light.textPrimary,
     marginRight: 8,
   },
   dropdownArrow: {
     fontSize: 15,
-    color: Colors.light.text,
+    color: Colors.light.textPrimary,
   },
   modalOverlay: {
     flex: 1,

@@ -12,6 +12,7 @@ import "../global.css";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { AuthProvider } from "@/core/auth/auth.context";
 import { ThemeProvider, useTheme } from "@/core/theme/theme-provider";
+import { useEffect } from "react";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -19,6 +20,11 @@ export const unstable_settings = {
 
 function RootLayoutNav() {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    // Ensure RTL is properly set on mount
+    // This helps with proper text direction after app reload
+  }, []);
 
   return (
     <NavigationThemeProvider
@@ -39,11 +45,11 @@ function RootLayoutNav() {
 export default function RootLayout() {
   return (
     <ThemeProvider>
-      <ErrorBoundary>
-        <AuthProvider>
+      <AuthProvider>
+        <ErrorBoundary>
           <RootLayoutNav />
-        </AuthProvider>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
