@@ -12,7 +12,6 @@ import "../global.css";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { AuthProvider } from "@/core/auth/auth.context";
 import { ThemeProvider, useTheme } from "@/core/theme/theme-provider";
-import { View } from "react-native";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -22,20 +21,18 @@ function RootLayoutNav() {
   const { theme } = useTheme();
 
   return (
-    <View className={theme === "dark" ? "dark" : ""}>
-      <NavigationThemeProvider
-        value={theme === "dark" ? DarkTheme : DefaultTheme}
-      >
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="index" />
-          <Stack.Screen name="auth/login" />
-          <Stack.Screen name="auth/register" />
-          <Stack.Screen name="auth/forgot-password" />
-          <Stack.Screen name="(tabs)" />
-        </Stack>
-        <StatusBar style={theme === "dark" ? "light" : "dark"} />
-      </NavigationThemeProvider>
-    </View>
+    <NavigationThemeProvider
+      value={theme === "dark" ? DarkTheme : DefaultTheme}
+    >
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="auth/login" />
+        <Stack.Screen name="auth/register" />
+        <Stack.Screen name="auth/forgot-password" />
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+      <StatusBar style={theme === "dark" ? "light" : "dark"} />
+    </NavigationThemeProvider>
   );
 }
 

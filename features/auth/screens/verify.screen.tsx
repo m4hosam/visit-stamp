@@ -1,5 +1,5 @@
 // (auth)/verify.tsx
-import { Colors } from "@/constants/Colors";
+import { Colors } from "@/constants/theme";
 import { useAuth } from "@/core/auth/auth.context";
 import { Alert } from "@/core/shared/alert";
 import { AuthService } from "@/features/auth/services/auth.service";
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   message: {
     fontSize: 16,
-    color: Colors.light.darkGray,
+    color: Colors.light.textSecondary,
     textAlign: "center",
     lineHeight: 24,
     marginBottom: 35,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   resendText: {
     fontSize: 16,
-    color: Colors.light.darkGray,
+    color: Colors.light.textSecondary,
     fontFamily: "Poppins_500Medium",
   },
   resendLink: {
